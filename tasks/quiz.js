@@ -14,30 +14,41 @@ fetchApi()
 
 async function displayItems(){
     await fetchApi()
-    let startIndex = (currentPage - 1) * itemsPerPage,
-    endIndex = (startIndex + itemsPerPage ),
-    showItems = countryList.slice(startIndex,endIndex)
-
-
-    showItems.forEach(function (keyList){
+    countryList.forEach(function (keyList){
         let mainDiv = document.getElementById('mainDiv')
         let innerDiv = document.createElement('innerDiv')
         mainDiv.className = 'mainDiv'
-        // mainDiv.style.backgroundColor = 'red'
-        // mainDiv.textContent = 'jdd'
         let countryName = document.createElement('h3')
         let countryFlag = document.createElement('img')
         countryName.textContent = `${keyList.country}`
         countryFlag.src = `${keyList.countryInfo.flag}`
-        // let countryCases = document.createElement('p')
+        countryFlag.style.cursor = 'pointer'
         innerDiv.append(countryName, countryFlag)
         mainDiv.append(innerDiv)
+
+    
         
+      
+        
+    })
+    function countryInfo(){
+        let biggerDiv = document.getElementById('mainDiv')
+        let imgDiv = document.createElement('innerDiv')
+        mainDiv.className = 'biggerDiv'
+        let innerCountryName = document.createElement('h3')
+        // let innerCountryFlag = document.createElement('img')
+        let innerCountryPopulation = document.createElement('p')
+        innerCountryName.textContent = `${keyList.country}`
+        innerCountryPopulation.textContent = `${keyList.population}`
+        innerCountryFlag.src = `${keyList.countryInfo.flag}`
+        imgDiv.append(innerCountryName, innerCountryPopulation)
+        biggerDiv.append(innerDiv)
+    }
+    mainDiv.addEventListener('click', ()=>{
+        countryInfo()
     })
 
 }
 displayItems()
 
-let prevBtn = document.getElementById('prevBtn')
-let nextBtn = document.getElementById('nextBtn')
 
