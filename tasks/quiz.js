@@ -36,7 +36,6 @@ async function displayItems(){
         let imgDiv = document.createElement('innerDiv')
         mainDiv.className = 'biggerDiv'
         let innerCountryName = document.createElement('h3')
-        // let innerCountryFlag = document.createElement('img')
         let innerCountryPopulation = document.createElement('p')
         innerCountryName.textContent = `${keyList.country}`
         innerCountryPopulation.textContent = `${keyList.population}`
