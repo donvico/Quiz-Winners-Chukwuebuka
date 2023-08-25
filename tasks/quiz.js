@@ -1,6 +1,6 @@
 let url = 'https://disease.sh/v3/covid-19/countries';
-let currentPage = 1,
-itemsPerPage = 40;
+// let currentPage = 1,
+// itemsPerPage = 40;
 let countryList = []
 
 
@@ -8,7 +8,7 @@ async function fetchApi (){
     const response = await fetch(url);
     const data = await response.json()
     countryList = data
-    console.log(countryList);
+    // console.log(countryList);
 }
 fetchApi()
 
@@ -16,7 +16,7 @@ async function displayItems(){
     await fetchApi()
     countryList.forEach(function (keyList){
         let mainDiv = document.getElementById('mainDiv')
-        let innerDiv = document.createElement('innerDiv')
+        let innerDiv = document.createElement('div')
         mainDiv.className = 'mainDiv'
         let countryName = document.createElement('h3')
         let countryFlag = document.createElement('img')
@@ -27,7 +27,7 @@ async function displayItems(){
         mainDiv.append(innerDiv)
 
     
-        mainDiv.addEventListener('click', ()=>{
+        countryFlag.addEventListener('click', ()=>{
             countryInfo(keyList)
         })
     
@@ -37,7 +37,7 @@ async function displayItems(){
     function countryInfo(keyList){
         let biggerDiv = document.getElementById('mainDiv')
         biggerDiv.innerHTML = ''
-        let imgDiv = document.createElement('innerDiv')
+        let imgDiv = document.createElement('div')
         mainDiv.className = 'biggerDiv'
         let innerCountryFlag = document.createElement('img')
         let innerCountryName = document.createElement('h3')
@@ -51,6 +51,9 @@ async function displayItems(){
    
 }
 displayItems()
+
+
+
 
 
 
