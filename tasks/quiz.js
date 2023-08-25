@@ -27,27 +27,34 @@ async function displayItems(){
         mainDiv.append(innerDiv)
 
     
-        
+        mainDiv.addEventListener('click', ()=>{
+            countryInfo(keyList)
+        })
+    
       
         
     })
-    function countryInfo(){
+    function countryInfo(keyList){
         let biggerDiv = document.getElementById('mainDiv')
+        biggerDiv.innerHTML = ''
         let imgDiv = document.createElement('innerDiv')
         mainDiv.className = 'biggerDiv'
+        let innerCountryFlag = document.createElement('img')
         let innerCountryName = document.createElement('h3')
         let innerCountryPopulation = document.createElement('p')
         innerCountryName.textContent = `${keyList.country}`
         innerCountryPopulation.textContent = `${keyList.population}`
         innerCountryFlag.src = `${keyList.countryInfo.flag}`
-        imgDiv.append(innerCountryName, innerCountryPopulation)
-        biggerDiv.append(innerDiv)
+        imgDiv.append(innerCountryName, innerCountryFlag, innerCountryPopulation)
+        biggerDiv.append(imgDiv)
     }
-    mainDiv.addEventListener('click', ()=>{
-        countryInfo()
-    })
-
+   
 }
 displayItems()
+
+
+
+
+
 
 
